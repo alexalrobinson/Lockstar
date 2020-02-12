@@ -1,8 +1,0 @@
-{
-    "name": "Lockstar",
-    "description": "A barebones Node.js app using Express 4",
-    "repository": "https://github.com/heroku/node-js-getting-started",
-    "logo": "src/images/lockstar.ico",
-    "keywords": ["node", "express", "heroku"],
-    "image": "heroku/nodejs"
-}
