@@ -1,0 +1,14 @@
+$theme-colors: (
+    "primary": black,
+);
+
+$accent: #ffae42;
+
+.carousel {
+    margin-left: auto;
+    margin-right: auto;
+};
+
+.card-header {
+    background: $accent;
+};

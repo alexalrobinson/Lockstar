@@ -1,0 +1,26 @@
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
+
+$bg: white;
+$accent: #ffae42;
+
+body {
+    background: $bg;
+}
+
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(15vw + 20vh);
+}
+
+#socials {
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+h1 {
+    color: $accent;
+}
