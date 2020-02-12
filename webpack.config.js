@@ -2,6 +2,14 @@ const htmlPlugin = require("html-webpack-plugin");
 const miniCSSPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
+    entry: [
+        './src/index.js'
+    ],
+    output: {
+        path: __dirname,
+        publicPath: '/',
+        filename: 'bundle.js'
+    },
     module: {
         rules: [
             {
