@@ -8,11 +8,19 @@ body {
     background: $bg;
 }
 
+img {
+    height: calc(15vw + 20vh);
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: calc(15vw + 20vh);
+    height: auto;
 }
 
 #socials {
@@ -23,4 +31,12 @@ body {
 
 h1 {
     color: $accent;
+}
+
+#prev {
+    color: black;
+}
+
+#next {
+    color: black;
 }
