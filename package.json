@@ -36,11 +36,15 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@cloudant/cloudant": "^4.2.3",
     "body-parser": "^1.19.0",
+    "cloudant": "^1.10.0-NOTICE",
     "express": "^4.17.1",
     "jquery": "^3.4.1",
     "jquery-form": "^4.2.2",
     "jquery-validation": "^1.19.1",
+    "logger": "0.0.1",
+    "pg": "^7.18.2",
     "popper.js": "^1.16.1",
     "precss": "^4.0.0",
     "request": "^2.88.2"

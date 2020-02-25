@@ -22,10 +22,10 @@
     <div class="row">
         <div class="col-md-3">
           <div class="nav flex-column nav-pills sticky-top" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="flex-sm-fill text-center nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-            <a class="flex-sm-fill text-center nav-link" id="v-pills-services-tab" data-toggle="pill" href="#v-pills-services" role="tab" aria-controls="v-pills-services" aria-selected="false">Services</a>
-            <a class="flex-sm-fill text-center nav-link" id="v-pills-about-tab" data-toggle="pill" href="#v-pills-about" role="tab" aria-controls="v-pills-about" aria-selected="false">About Us</a>
-            <a class="flex-sm-fill text-center nav-link" id="v-pills-guestbook-tab" data-toggle="pill" href="#v-pills-guestbook" role="tab" aria-controls="v-pills-guestbook" aria-selected="false">Guestbook</a>
+            <a class="flex-sm-fill text-center nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">HOME</a>
+            <a class="flex-sm-fill text-center nav-link" id="v-pills-services-tab" data-toggle="pill" href="#v-pills-services" role="tab" aria-controls="v-pills-services" aria-selected="false">SERVICES</a>
+            <a class="flex-sm-fill text-center nav-link" id="v-pills-about-tab" data-toggle="pill" href="#v-pills-about" role="tab" aria-controls="v-pills-about" aria-selected="false">ABOUT US</a>
+            <a class="flex-sm-fill text-center nav-link" id="v-pills-guestbook-tab" data-toggle="pill" href="#v-pills-guestbook" role="tab" aria-controls="v-pills-guestbook" aria-selected="false">GUESTBOOK</a>
           </div>
         </div>
         <div class="col-md-9">
@@ -204,9 +204,12 @@
                             <label for="comment-guestbook" class="col-sm-2 col-form-label">Comment</label>
                             <textarea class="form-control" id="comment-guestbook" rows="3"></textarea>
                         </div>
-                        <div class="g-recaptcha" data-sitekey="6Ld2Z9gUAAAAAJZenwkHrUevMjXnGh0xBCmIqcHB"></div><br>
+                        <div class="form-group row">
+                            <div class="g-recaptcha w-100" data-sitekey="6Ld2Z9gUAAAAAJZenwkHrUevMjXnGh0xBCmIqcHB"></div>
+                        </div>
                         <input type="submit" name="submit" class="btn btn-primary" value="Post comment"><br><br>
                     </form>
+                    <div id="response"></div>
                 </div>
             </div>
           </div>
