@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 //var cfenv = require("cfenv");
 //const Cloudant = require('cloudant');
-const vcap = require('./vcap-local.json');
+//const vcap = require('./vcap-local.json');
 
 const port = process.env.PORT || 8080;
 const app = express();
