@@ -2,10 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const request = require('request');
-//var cfenv = require("cfenv");
-//const Cloudant = require('cloudant');
-//const vcap = require('./vcap-local.json');
+//const request = require('request');
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -15,58 +12,6 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: true
 });
-
-
-
-/*let cloudant, db;
-let newComment = {};
-let allComments = {};
-
-newComment.cloudant = function(doc, response) {
-  db.insert(doc, function(err, body, header) {
-    if (err) {
-      console.log('[db.insert] ', err.message);
-      response.send("Error");
-      return;
-    }
-    doc._id = 'guestbook:6969';
-    response.send(doc);
-  });
-}
-
-allComments.cloudant = function(response) {
-  let comments = [];  
-  db.list({ include_docs: true }, function(err, body) {
-    if (!err) {
-      body.rows.forEach(function(row) {
-        if(row.doc)
-          comments.push(row.doc);
-      });
-      response.json(comments);
-    }
-  });
-  //return comments;
-}
-
-function dbCloudantConnect() {
-
-  cloudant = Cloudant(vcap.services.cloudantNoSQLDB.credentials);
-
-  if(cloudant) {
-      //database name
-      dbName = 'lockstar';
-
-    // Create a new "mydb" database.
-    cloudant.db.create(dbName, function(err, data) {
-      if(!err) //err if database doesn't already exists
-        console.log("Created database: " + dbName);
-    });
-  }
-  // Specify the database we are going to use (mydb)...
-  db = cloudant.db.use(dbName);
-}
-
-dbCloudantConnect();*/
 
 // the __dirname is the current directory from where the script is running
 app.use(express.static(__dirname));
