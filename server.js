@@ -3,8 +3,6 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
 
 //const request = require('request');
 
@@ -20,7 +18,9 @@ const pool = new Pool({
 // the __dirname is the current directory from where the script is running
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended : false}));
+app.use(bodyParser.urlencoded({extended : false}));app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+
 
 // send the user to index html page inspite of the url
 app.get('/', (req, res) => {
