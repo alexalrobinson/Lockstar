@@ -15,6 +15,26 @@ const pool = new Pool({
   ssl: true
 });
 
+const getPosts = (request, response) => {
+  pool.query('SELECT * FROM posts', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
+const addPost = (request, response) => {
+  const { author, content } = request.body
+
+  pool.query('INSERT INTO posts (author, content) VALUES ($1, $2)', [author, content], error => {
+    if (error) {
+      throw error
+    }
+    response.status(201).json({ status: 'success', message: 'Post added.' })
+  })
+}
+
 // the __dirname is the current directory from where the script is running
 //app.engine('handlebars', exphbs());
 //app.set('view engine', 'handlebars');
@@ -24,12 +44,19 @@ app.use(bodyParser.urlencoded({extended : false}));
 
 
 // send the user to index html page inspite of the url
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   res.setHeader("Content-Security-Policy", "default-src 'self' www.google.com www.gstatic.com 'unsafe-inline' 'unsafe-eval' data:;");
   res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
-app.get('/db', async (req, res) => {
+app
+  .route('/posts')
+  // GET endpoint
+  .get(getPosts)
+  // POST endpoint
+  .post(addPost)
+
+/*app.get('/db', async (req, res) => {
   try {
     const client = await pool.connect()
     const result = await client.query('SELECT * FROM posts');
@@ -40,7 +67,7 @@ app.get('/db', async (req, res) => {
     console.error(err);
     res.send("Error " + err);
   }
-})
+})*/
 
 /*
 app.post('/submit',function(req,res){
