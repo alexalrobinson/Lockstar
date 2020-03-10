@@ -17,6 +17,7 @@ const pool = new Pool({
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
+app.set('view engine', 'handlebars');
 
 // send the user to index html page inspite of the url
 app.get('/', (req, res) => {
