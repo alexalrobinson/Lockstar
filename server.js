@@ -16,8 +16,8 @@ const pool = new Pool({
 });
 
 // the __dirname is the current directory from where the script is running
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
+//app.engine('handlebars', exphbs());
+//app.set('view engine', 'handlebars');
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
