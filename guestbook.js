@@ -11,16 +11,28 @@ $(document).ready(function() {
                 let comment = $('#comment-guestbook').val();
                 $.ajax({
                     method: "POST",
-                    url: "./api/comments",
+                    url: "./posts",
                     contentType: "application/json",
-                    data: JSON.stringify({name: name , email: email, content: comment})
+                    data: JSON.stringify({author: name , email: email, content: comment})
                 })
                 .done(function(data) {
-                    $('#response').html('added_to_database ' + data.name + data.email + data.comment);
+                    $('#response').html('added_to_database ' + data.author + data.email + data.content);
                 });
             }
         });
         //Very important line, it disable the page refresh.
         return false;
     });
+    
+    let posts = "error";
+    $.ajax({
+        method: "GET",
+        url: "./posts",
+        contentType: "application/json",
+        success: function(resp) {
+            posts = resp
+        }
+    });
+
+    console.log(posts);
 });

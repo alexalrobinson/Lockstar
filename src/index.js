@@ -7,7 +7,7 @@ import carousel2 from './images/carousel2.jpg';
 import carousel3 from './images/carousel3.jpg';
 import carousel4 from './images/carousel4.jpg';
 
-document.getElementById("logo").src =logo;
+document.getElementById("logo").src = logo;
 document.getElementById("carousel1").src = carousel1;
 document.getElementById("carousel2").src = carousel2;
 document.getElementById("carousel3").src = carousel3;
