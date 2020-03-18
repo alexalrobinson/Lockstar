@@ -1,7 +1,4 @@
 import('bootstrap');
-var $ = require("jquery");
-window.jQuery = $;
-window.$ = $;
 import './styles/main.scss';
 import logo from './images/lock_starlogo.jpg';
 import van from './images/van.jpg';
