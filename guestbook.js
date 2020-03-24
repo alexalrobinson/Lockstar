@@ -2,8 +2,7 @@ $(document).ready(function() {
     $('#comment_form').submit(function() {
         $(this).ajaxSubmit({
             error: function(xhr) {
-                let status = 'Error: ' + xhr.status;
-                console.log(status);
+                status('Error: ' + xhr.status);
             },
             success: function(response) {
                 console.log(response);
