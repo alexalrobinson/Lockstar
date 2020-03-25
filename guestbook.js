@@ -30,7 +30,7 @@ $(document).ready(function() {
         //Very important line, it disable the page refresh.
         return false;
     });
-
+    /*
     $.ajax({
         method: "GET",
         url: "./posts",
@@ -39,5 +39,5 @@ $(document).ready(function() {
     })
     .done(function(data) {
         console.log('added_to_database ' + data.status + data.message);
-    });
+    });*/
 });
