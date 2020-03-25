@@ -7,13 +7,39 @@ const request = require('request');
 const port = process.env.PORT || 8080;
 const app = express();
 
+const { Pool } = require('pg');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true
+});
+/*
+const getPosts = (request, response) => {
+  pool.query('SELECT * FROM posts', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
+const addPost = (request, response) => {
+  const { author, email, content } = request.body
+
+  pool.query('INSERT INTO posts (author, email, content) VALUES ($1, $2, $3)', [author, email, content], error => {
+    if (error) {
+      throw error
+    }
+    response.status(201).json({ status: 'success', message: 'Post added.' })
+  })
+}*/
+
 // the __dirname is the current directory from where the script is running
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
 
 // send the user to index html page inspite of the url
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.setHeader("Content-Security-Policy", "default-src 'self' www.google.com www.gstatic.com 'unsafe-inline' 'unsafe-eval' data:;");
   res.sendFile(path.resolve(__dirname, 'index.html'));
 });
@@ -38,6 +64,26 @@ app.post('/submit',function(req,res){
     }
     res.json({"responseCode" : 0,"responseDesc" : "Sucess"});
   });
+});
+
+app.get('/posts', function(req,res){
+  pool.query('SELECT * FROM posts', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+});
+
+app.post('/posts', function(req, res){
+  const { author, email, content } = request.body
+
+  pool.query('INSERT INTO posts (author, email, content) VALUES ($1, $2, $3)', [author, email, content], error => {
+    if (error) {
+      throw error
+    }
+    response.status(201).json({ status: 'success', message: 'Post added.' })
+  })
 });
 
 // This will handle 404 requests.
