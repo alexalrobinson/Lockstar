@@ -30,4 +30,14 @@ $(document).ready(function() {
         //Very important line, it disable the page refresh.
         return false;
     });
+
+    $.ajax({
+        method: "GET",
+        url: "./posts",
+        contentType: "application/json",
+        data: JSON.stringify({author: name , email: email, content: comment})
+    })
+    .done(function(data) {
+        console.log('added_to_database ' + data.status + data.message);
+    });
 });
