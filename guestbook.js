@@ -6,18 +6,25 @@ $(document).ready(function() {
             },
             success: function(response) {
                 console.log(response);
-                let name = $('#name-guestbook').val();
-                let email = $('#email-guestbook').val();
-                let comment = $('#comment-guestbook').val();
-                $.ajax({
-                    method: "POST",
-                    url: "./posts",
-                    contentType: "application/json",
-                    data: JSON.stringify({author: name , email: email, content: comment})
-                })
-                .done(function(data) {
-                    $('#response').html('added_to_database ' + data.author + data.email + data.content);
-                });
+                if(response.responseCode === 0){
+                    console.log(response.responseCode);
+                    let name = $('#name-guestbook').val();
+                    let email = $('#email-guestbook').val();
+                    let comment = $('#comment-guestbook').val();
+                    console.log(name);
+                    console.log(email);
+                    console.log(comment);
+                    $.ajax({
+                        method: "POST",
+                        url: "./posts",
+                        contentType: "application/json",
+                        data: JSON.stringify({author: name , email: email, content: comment})
+                    })
+                    .done(function(data) {
+                        console.log('added_to_database ' + data.status + data.message);
+                    });
+                    
+                }
             }
         });
         //Very important line, it disable the page refresh.

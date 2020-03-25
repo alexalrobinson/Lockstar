@@ -14,7 +14,7 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: true
 });
-
+/*
 const getPosts = (request, response) => {
   pool.query('SELECT * FROM posts', (error, results) => {
     if (error) {
@@ -25,15 +25,15 @@ const getPosts = (request, response) => {
 }
 
 const addPost = (request, response) => {
-  const { author, content } = request.body
+  const { author, email, content } = request.body
 
-  pool.query('INSERT INTO posts (author, content) VALUES ($1, $2)', [author, content], error => {
+  pool.query('INSERT INTO posts (author, email, content) VALUES ($1, $2, $3)', [author, email, content], error => {
     if (error) {
       throw error
     }
     response.status(201).json({ status: 'success', message: 'Post added.' })
   })
-}
+}*/
 
 // the __dirname is the current directory from where the script is running
 //app.engine('handlebars', exphbs());
@@ -101,6 +101,26 @@ app.post("/api/comments", function (request, response) {
   }
   newComment.cloudant(doc, response);
 });*/
+
+app.get('/posts', function(req,res){
+  pool.query('SELECT * FROM posts', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+});
+
+app.post('/posts', function(req, res){
+  const { author, email, content } = request.body
+
+  pool.query('INSERT INTO posts (author, email, content) VALUES ($1, $2, $3)', [author, email, content], error => {
+    if (error) {
+      throw error
+    }
+    response.status(201).json({ status: 'success', message: 'Post added.' })
+  })
+});
 
 // This will handle 404 requests.
 app.use("*",function(req,res) {
