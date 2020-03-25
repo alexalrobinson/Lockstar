@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const exphbs = require('express-handlebars');
+//const exphbs = require('express-handlebars');
 
 //const request = require('request');
 
@@ -48,13 +48,6 @@ app.get('/', (req, res) => {
   res.setHeader("Content-Security-Policy", "default-src 'self' www.google.com www.gstatic.com 'unsafe-inline' 'unsafe-eval' data:;");
   res.sendFile(path.resolve(__dirname, 'index.html'));
 });
-
-app
-  .route('/posts')
-  // GET endpoint
-  .get(getPosts)
-  // POST endpoint
-  .post(addPost)
 
 /*app.get('/db', async (req, res) => {
   try {
