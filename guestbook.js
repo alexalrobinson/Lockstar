@@ -68,5 +68,15 @@ $(document).ready(function() {
         });
         return await response;
     }*/
-    request_all_posts();
+    let posts = await request_all_posts();
+    for (postID in posts) {
+        currPost = posts[postID];
+        $("#posts").append(`
+        <div class="hidden card w-100 mb-3 post" id="${postID}">
+            <div class="d-flex bd-highlight card-body">
+                <h6 class="card-subtitle mb-2 text-muted text-left">Posted by <strong>${currPost.name}</strong> on [INSERT TIME HERE]</h6>
+                <p class="card-text text-left">${currPost.content}</p>
+            </div>
+        </div>`);
+    }
 });
