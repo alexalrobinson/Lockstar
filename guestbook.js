@@ -21,7 +21,7 @@ $(document).ready(function() {
                         data: JSON.stringify({author: name , email: email, content: comment})
                     })
                     .done(function(data) {
-                        console.log('added_to_database ' + data.status + data.message);
+                        console.log('added_to_database ' + data.name + data.email + data.content);
                     });
                     
                 }
@@ -33,10 +33,11 @@ $(document).ready(function() {
     $.ajax({
         method: "GET",
         url: "./posts",
-        contentType: "application/json",
-        data: JSON.stringify({author: name , email: email, content: comment})
+        contentType: "application/json"
+        //data: JSON.stringify({author: name , email: email, content: comment})
     })
     .done(function(data) {
-        console.log('added_to_database ' + data.status + data.message);
+        console.log('added_to_database ' + data);
+        console.log("success");
     });
 });
