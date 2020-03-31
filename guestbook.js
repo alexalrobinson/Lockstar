@@ -30,14 +30,43 @@ $(document).ready(function() {
         //Very important line, it disable the page refresh.
         return false;
     });
-    $.ajax({
+    /*$.ajax({
         method: "GET",
         url: "./posts",
         contentType: "application/json"
         //data: JSON.stringify({author: name , email: email, content: comment})
     })
     .done(function(data) {
-        console.log('added_to_database ' + data);
-        console.log("success");
-    });
+        console.log("s");
+    });*/
+    async function request_all_posts(bool) {
+        console.log('all posts requested');
+        let val = await fetch('https://pacific-badlands-30319.herokuapp.com/posts', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((resp) => resp.json());
+        console.log(val);
+        return val;
+    }
+    /*
+    async function create_post(name, email, comment) {
+        let params = {
+            "name": name,
+            "email": email,
+            "comment": comment
+        };
+        console.log('create post requested');
+        const response = await fetch('https://pacific-badlands-30319.herokuapp.com/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(params)
+        });
+        return await response;
+    }*/
+    request_all_posts();
 });
