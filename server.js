@@ -2,7 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const request = require('request');
+const exphbs = require('express-handlebars');
+
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -12,7 +13,7 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: true
 });
-/*
+
 const getPosts = (request, response) => {
   pool.query('SELECT * FROM posts', (error, results) => {
     if (error) {
@@ -31,7 +32,7 @@ const addPost = (request, response) => {
     }
     response.status(201).json({ status: 'success', message: 'Post added.' })
   })
-}*/
+}
 
 // the __dirname is the current directory from where the script is running
 app.use(express.static(__dirname));
@@ -66,25 +67,12 @@ app.post('/submit',function(req,res){
   });
 });
 
-app.get('/posts', function(req,res){
-  pool.query('SELECT * FROM posts', (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(200).json(results.rows)
-  })
-});
-
-app.post('/posts', function(req, res){
-  const { author, email, content } = request.body
-
-  pool.query('INSERT INTO posts (author, email, content) VALUES ($1, $2, $3)', [author, email, content], error => {
-    if (error) {
-      throw error
-    }
-    response.status(201).json({ status: 'success', message: 'Post added.' })
-  })
-});
+app
+  .route('/posts')
+  // GET endpoint
+  .get(getPosts)
+  // POST endpoint
+  .post(addPost);
 
 // This will handle 404 requests.
 app.use("*",function(req,res) {
