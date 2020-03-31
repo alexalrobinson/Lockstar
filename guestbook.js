@@ -68,7 +68,7 @@ $(document).ready(function() {
         });
         return await response;
     }*/
-    let posts = await request_all_posts();
+    let posts = request_all_posts();
     for (postID in posts) {
         currPost = posts[postID];
         $("#posts").append(`
