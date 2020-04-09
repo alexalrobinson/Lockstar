@@ -6,7 +6,7 @@ async function request_all_posts(bool) {
         }
     })
     .then((resp) => resp.json());
-    console.log(posts);
+
     posts.forEach((post) => {
         let postedOn = new Date(post.date);
         $("#posts").append(`
@@ -63,27 +63,15 @@ $(document).ready(function() {
     .done(function(data) {
         console.log("s");
     });*/
-    /*async function request_all_posts(bool) {
-        console.log('all posts requested');
-        let val = await fetch('https://pacific-badlands-30319.herokuapp.com/posts', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then((resp) => resp.json());
-        console.log(val);
-        return val;
-    }*/
-    /*
+
     async function create_post(name, email, comment) {
         let params = {
-            "name": name,
+            "author": name,
             "email": email,
-            "comment": comment
+            "content": comment
         };
         console.log('create post requested');
-        const response = await fetch('https://pacific-badlands-30319.herokuapp.com/posts', {
+        const response = await fetch('./posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -91,7 +79,7 @@ $(document).ready(function() {
             body: JSON.stringify(params)
         });
         return await response;
-    }*/
-
+    }
+    create_post("alli", "alexa.l.robinson@gmail.com", "hey there");
     request_all_posts();
 });
