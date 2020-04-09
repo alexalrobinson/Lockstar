@@ -39,7 +39,7 @@ $(document).ready(function() {
     .done(function(data) {
         console.log("s");
     });*/
-    async function request_all_posts(bool) {
+    /*async function request_all_posts(bool) {
         console.log('all posts requested');
         let val = await fetch('https://pacific-badlands-30319.herokuapp.com/posts', {
             method: 'GET',
@@ -50,7 +50,7 @@ $(document).ready(function() {
         .then((resp) => resp.json());
         console.log(val);
         return val;
-    }
+    }*/
     /*
     async function create_post(name, email, comment) {
         let params = {
@@ -68,7 +68,13 @@ $(document).ready(function() {
         });
         return await response;
     }*/
-    let posts = await request_all_posts();
+    let posts = await fetch('https://pacific-badlands-30319.herokuapp.com/posts', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then((resp) => resp.json());
     console.log(posts);
     posts.forEach(post =>
         $("#posts").append(`
