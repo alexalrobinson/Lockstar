@@ -1,8 +1,32 @@
+async function request_all_posts(bool) {
+    let posts = await fetch('https://pacific-badlands-30319.herokuapp.com/posts', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then((resp) => resp.json());
+    console.log(posts);
+    posts.forEach((post) => {
+        let postedOn = new Date(post.date);
+        $("#posts").append(`
+            <br>
+            <div class="hidden card w-100 mb-3 post">
+                <div class="bd-highlight card-body">
+                    <h6 class="card-title mb-2 text-muted">Posted by <strong>${post.author}</strong> on ${postedOn.toDateString()}</h6>
+                    <p class="card-text">${post.content}</p>
+                </div>
+                
+            </div>
+        `);
+    });
+}
+
 $(document).ready(function() {
     $('#comment_form').submit(function() {
         $(this).ajaxSubmit({
             error: function(xhr) {
-                status('Error: ' + xhr.status);
+                console.log(`Error: ${xhr.status}`);
             },
             success: function(response) {
                 console.log(response);
@@ -69,29 +93,5 @@ $(document).ready(function() {
         return await response;
     }*/
 
-
-    async function request_all_posts(bool) {
-        let posts = await fetch('https://pacific-badlands-30319.herokuapp.com/posts', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then((resp) => resp.json());
-        console.log(posts);
-        posts.forEach((post) => {
-            let postedOn = new Date(post.date);
-            $("#posts").append(`
-                <br>
-                <div class="hidden card w-100 mb-3 post">
-                    <div class="bd-highlight card-body">
-                        <h6 class="card-title mb-2 text-muted">Posted by <strong>${post.author}</strong> on ${postedOn.toDateString()}</h6>
-                        <p class="card-text">${post.content}</p>
-                    </div>
-                    
-                </div>
-            `);
-        });
-    }
     request_all_posts();
 });
