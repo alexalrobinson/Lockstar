@@ -68,7 +68,7 @@ $(document).ready(function() {
         });
         return await response;
     }*/
-    let posts = request_all_posts();
+    let posts = await request_all_posts();
     console.log(posts);
     posts.forEach(post =>
         $("#posts").append(`
