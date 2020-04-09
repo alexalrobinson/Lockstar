@@ -82,6 +82,7 @@ $(document).ready(function() {
         posts.forEach((post) => {
             let postedOn = new Date(post.date);
             $("#posts").append(`
+                <br>
                 <div class="hidden card w-100 mb-3 post">
                     <div class="bd-highlight card-body">
                         <h6 class="card-title mb-2 text-muted">Posted by <strong>${post.author}</strong> on ${postedOn.toDateString()}</h6>
