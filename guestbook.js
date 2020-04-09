@@ -83,10 +83,11 @@ $(document).ready(function() {
             let postedOn = new Date(post.date);
             $("#posts").append(`
                 <div class="hidden card w-100 mb-3 post">
-                    <div class="d-flex bd-highlight card-body">
+                    <div class="bd-highlight card-body">
                         <h6 class="card-title mb-2 text-muted">Posted by <strong>${post.author}</strong> on ${postedOn.toDateString()}</h6>
                         <p class="card-text">${post.content}</p>
                     </div>
+                    
                 </div>
             `);
         });
