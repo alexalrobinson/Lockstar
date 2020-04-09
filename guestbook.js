@@ -64,12 +64,11 @@ $(document).ready(function() {
         console.log("s");
     });*/
 
-    async function create_post(name, email, comment, date) {
+    async function create_post(name, email, comment) {
         let params = {
             "author": name,
             "email": email,
-            "content": comment,
-            "date": date
+            "content": comment
         };
         console.log('create post requested');
         const response = await fetch('./posts', {
@@ -81,6 +80,6 @@ $(document).ready(function() {
         });
         return await response;
     }
-    create_post("alli", "alexa.l.robinson@gmail.com", "hey there", (new Date()).toISOString());
+    create_post("alli", "alexa.l.robinson@gmail.com", "hey there");
     request_all_posts();
 });
