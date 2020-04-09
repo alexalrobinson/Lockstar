@@ -69,6 +69,7 @@ $(document).ready(function() {
         return await response;
     }*/
     let posts = request_all_posts();
+    console.log(posts);
     posts.forEach(post =>
         $("#posts").append(`
         <div class="hidden card w-100 mb-3 post">
