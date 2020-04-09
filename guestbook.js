@@ -68,6 +68,8 @@ $(document).ready(function() {
         });
         return await response;
     }*/
+
+
     async function request_all_posts(bool) {
         let posts = await fetch('https://pacific-badlands-30319.herokuapp.com/posts', {
             method: 'GET',
@@ -77,17 +79,18 @@ $(document).ready(function() {
         })
         .then((resp) => resp.json());
         console.log(posts);
-        posts.forEach(post =>
+        posts.forEach((post) => {
+            let postedOn = new Date(post.date);
             $("#posts").append(`
                 <div class="hidden card w-100 mb-3 post">
                     <div class="d-flex bd-highlight card-body">
-                        <h6 class="card-subtitle mb-2 text-muted text-left">Posted by <strong>${post.author}</strong> on ${post.date}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted text-left">Posted by <strong>${post.author}</strong> on ${toDateString(postedOn)}</h6>
                         <br>
                         <p class="card-text text-left">${post.content}</p>
                     </div>
                 </div>
-            `)
-        );
+            `);
+        });
     }
     request_all_posts();
 });
