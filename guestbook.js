@@ -1,5 +1,5 @@
 async function request_all_posts(bool) {
-    let posts = await fetch('https://pacific-badlands-30319.herokuapp.com/posts', {
+    let posts = await fetch('./posts', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ async function request_all_posts(bool) {
 $(document).ready(function() {
     $('#comment_form').submit(function() {
         $(this).ajaxSubmit({
-            url: "https://pacific-badlands-30319.herokuapp.com",
+            url: "https://pacific-badlands-30319.herokuapp.com/submit",
             error: function(xhr) {
                 console.log(`Error: ${xhr.status}`);
             },
