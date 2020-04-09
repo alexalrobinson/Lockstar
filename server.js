@@ -24,9 +24,9 @@ const getPosts = (request, response) => {
 }
 
 const addPost = (request, response) => {
-  const { author, email, content } = request.body
+  const { author, email, content, date } = request.body
 
-  pool.query('INSERT INTO posts (author, email, content, date) VALUES ($1, $2, $3, $4)', [author, email, content, DEFAULT], error => {
+  pool.query('INSERT INTO posts (author, email, content, date) VALUES ($1, $2, $3, $4)', [author, email, content, date], error => {
     if (error) {
       throw error
     }
