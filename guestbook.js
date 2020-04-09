@@ -25,6 +25,7 @@ async function request_all_posts(bool) {
 $(document).ready(function() {
     $('#comment_form').submit(function() {
         $(this).ajaxSubmit({
+            url: "https://pacific-badlands-30319.herokuapp.com/submit",
             error: function(xhr) {
                 console.log(`Error: ${xhr.status}`);
             },
