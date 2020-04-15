@@ -53,7 +53,7 @@ $(document).ready(function() {
                     console.log(name);
                     console.log(email);
                     console.log(comment);
-                    $.ajax({
+                    /*$.ajax({
                         method: "POST",
                         url: "./posts",
                         contentType: "application/json",
@@ -61,7 +61,7 @@ $(document).ready(function() {
                     })
                     .done(function(data) {
                         console.log('added_to_database ' + data.author + data.email + data.content);
-                    });
+                    });*/
                     
                 }
             }
