@@ -1,3 +1,14 @@
+async function formPost(author, date, content){
+    $("#posts").append(`
+        <div class="hidden card w-100 mb-3 post">
+            <div class="bd-highlight card-body">
+                <h6 class="card-title mb-2 text-muted">Posted by <strong>${author}</strong> on ${date}</h6>
+                <p class="card-text">${content}</p>
+            </div>
+        </div>
+    `);
+}
+
 async function request_all_posts(bool) {
     let posts = await fetch('./posts', {
         method: 'GET',
@@ -9,16 +20,10 @@ async function request_all_posts(bool) {
 
     posts.forEach((post) => {
         let postedOn = new Date(post.date);
-        $("#posts").append(`
-            <div class="hidden card w-100 mb-3 post">
-                <div class="bd-highlight card-body">
-                    <h6 class="card-title mb-2 text-muted">Posted by <strong>${post.author}</strong> on ${postedOn.toDateString()}</h6>
-                    <p class="card-text">${post.content}</p>
-                </div>
-            </div>
-        `);
+        formPost(post.author, postedOn.toDateString(), post.content);
     });
 }
+
 
 async function create_post(name, email, comment) {
     let params = {
@@ -53,16 +58,9 @@ $(document).ready(function() {
                     console.log(name);
                     console.log(email);
                     console.log(comment);
-                    $.ajax({
-                        method: "POST",
-                        url: "./posts",
-                        contentType: "application/json",
-                        data: JSON.stringify({author: name , email: email, content: comment})
-                    })
-                    .done(function(data) {
-                        console.log('added_to_database ' + data.author + data.email + data.content);
-                    });
-                    
+                    create_post(name, email, comment);
+                    let currdate = new Date();
+                    formPost(name, currdate.toDateString(), comment);
                 }
             }
         });
