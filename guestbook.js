@@ -58,6 +58,7 @@ $(document).ready(function() {
                     console.log(name);
                     console.log(email);
                     console.log(comment);
+                    $('#comment_form')[0].reset();
                     create_post(name, email, comment);
                     let currdate = new Date();
                     formPost(name, currdate.toDateString(), comment);
