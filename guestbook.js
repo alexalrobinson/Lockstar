@@ -68,6 +68,5 @@ $(document).ready(function() {
         //Very important line, it disable the page refresh.
         return false;
     });
-
     request_all_posts();
 });
