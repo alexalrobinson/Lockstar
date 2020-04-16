@@ -76,7 +76,7 @@ $(document).ready(function() {
     $("#see-more").on("click", () => {
         $("#toggle-posts").prop("hidden", true);
 
-        for(let i = 5; i<posts.length; i++){
+        for(let i = 0; i<posts.length; i++){
             let postedOn = new Date(posts[i].date);
             formPost(posts[i].author, postedOn.toDateString(), posts[i].content); 
         }
