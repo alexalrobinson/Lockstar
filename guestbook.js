@@ -18,6 +18,10 @@ async function request_all_posts(bool) {
         }
     })
     .then((resp) => resp.json());
+    for(let i = 0; i<5; i++){
+        let postedOn = new Date(posts[i].date);
+        formPost(posts[i].author, postedOn.toDateString(), posts[i].content);
+    }
 }
 
 
@@ -74,8 +78,4 @@ $(document).ready(function() {
     });
 
     request_all_posts();
-    for(let i = 0; i<5; i++){
-        let postedOn = new Date(posts[i].date);
-        formPost(posts[i].author, postedOn.toDateString(), posts[i].content);
-    }
 });
