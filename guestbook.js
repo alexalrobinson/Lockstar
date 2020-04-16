@@ -18,14 +18,6 @@ async function request_all_posts(bool) {
         }
     })
     .then((resp) => resp.json());
-    for(let i = 0; i<5; i++){
-        let postedOn = new Date(posts[i].date);
-        formPost(posts[i].author, postedOn.toDateString(), posts[i].content);
-    }
-    /*posts.forEach((post) => {
-        let postedOn = new Date(post.date);
-        formPost(post.author, postedOn.toDateString(), post.content);
-    });*/
 }
 
 
@@ -75,12 +67,15 @@ $(document).ready(function() {
 
     $("#see-more").on("click", () => {
         $("#toggle-posts").prop("hidden", true);
-
-        for(let i = 0; i<posts.length; i++){
+        for(let i = 5; i<posts.length && posts.length>=5; i++){
             let postedOn = new Date(posts[i].date);
             formPost(posts[i].author, postedOn.toDateString(), posts[i].content); 
         }
     });
 
     request_all_posts();
+    for(let i = 0; i<5; i++){
+        let postedOn = new Date(posts[i].date);
+        formPost(posts[i].author, postedOn.toDateString(), posts[i].content);
+    }
 });
