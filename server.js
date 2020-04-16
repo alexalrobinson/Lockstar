@@ -41,7 +41,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
 
 // send the user to index html page inspite of the url
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.setHeader("Content-Security-Policy", "default-src 'self' www.google.com www.gstatic.com 'unsafe-inline' 'unsafe-eval' data:;");
   res.sendFile(path.resolve(__dirname, 'index.html'));
 });

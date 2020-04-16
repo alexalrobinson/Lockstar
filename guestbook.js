@@ -1,3 +1,4 @@
+let posts;
 async function formPost(author, date, content){
     $("#posts").append(`
         <div class="hidden card w-100 mb-3 post">
@@ -10,18 +11,21 @@ async function formPost(author, date, content){
 }
 
 async function request_all_posts(bool) {
-    let posts = await fetch('./posts', {
+    posts = await fetch('./posts', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         }
     })
     .then((resp) => resp.json());
-
-    posts.forEach((post) => {
+    for(let i = 0; i<5; i++){
+        let postedOn = new Date(posts[i].date);
+        formPost(posts[i].author, postedOn.toDateString(), posts[i].content);
+    }
+    /*posts.forEach((post) => {
         let postedOn = new Date(post.date);
         formPost(post.author, postedOn.toDateString(), post.content);
-    });
+    });*/
 }
 
 
@@ -68,5 +72,15 @@ $(document).ready(function() {
         //Very important line, it disable the page refresh.
         return false;
     });
+
+    $("#see-more").on("click", () => {
+        $("#toggle-posts").prop("hidden", true);
+
+        for(let i = 5; i<posts.length; i++){
+            let postedOn = new Date(posts[i].date);
+            formPost(posts[i].author, postedOn.toDateString(), posts[i].content); 
+        }
+    });
+
     request_all_posts();
 });
