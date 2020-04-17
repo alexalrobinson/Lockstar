@@ -1,8 +1,8 @@
 $accent: #ffae42;
 
 $theme-colors: (
-    "primary": black,
-    "secondary": $accent,
+    "primary": $accent,
+    "secondary": black,
 );
 
 .carousel {
@@ -24,5 +24,5 @@ $theme-colors: (
 }
 
 .active {
-    color: $accent;
+    color: black;
 }
