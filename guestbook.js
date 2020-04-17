@@ -71,7 +71,7 @@ $(document).ready(function() {
     });
 
     $("#see-more").on("click", () => {
-        for(let i = postsToShow-5; i<postsToShow; i++){
+        for(let i = postsToShow-5; i<postsToShow && i<posts.length; i++){
             let postedOn = new Date(posts[i].date);
             $("#posts").append(formPost(posts[i].author, postedOn.toDateString(), posts[i].content)); 
         }
