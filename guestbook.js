@@ -1,20 +1,5 @@
 let posts;
-/*async function formPost(author, date, content){
-    $("#posts").append(`
-        <div class="hidden card w-100 mb-3 post">
-            <div class="bd-highlight card-body">
-                <h6 class="card-title mb-2 text-muted">Posted by <strong>${author}</strong> on ${date}</h6>
-                <p class="card-text">${content}</p>
-            </div>
-        </div>
-    `);
-    return `<div class="hidden card w-100 mb-3 post">
-        <div class="bd-highlight card-body">
-            <h6 class="card-title mb-2 text-muted">Posted by <strong>${author}</strong> on ${date}</h6>
-            <p class="card-text">${content}</p>
-        </div>
-    </div>`;
-}*/
+let postsToShow=5;
 
 let formPost = (author, date, content) => {
     return `<div class="hidden card w-100 mb-3 post">
@@ -33,10 +18,11 @@ async function request_all_posts(bool) {
         }
     })
     .then((resp) => resp.json());
-    for(let i = 0; i<5; i++){
+    for(let i = 0; i<postsToShow; i++){
         let postedOn = new Date(posts[i].date);
         $("#posts").append(formPost(posts[i].author, postedOn.toDateString(), posts[i].content));
     }
+    postsToShow = 10;
 }
 
 
@@ -85,10 +71,13 @@ $(document).ready(function() {
     });
 
     $("#see-more").on("click", () => {
-        $("#toggle-posts").prop("hidden", true);
-        for(let i = 5; i<posts.length && posts.length>=5; i++){
+        for(let i = postsToShow-5; i<postsToShow && posts.length>=postsToShow-5; i++){
             let postedOn = new Date(posts[i].date);
             $("#posts").append(formPost(posts[i].author, postedOn.toDateString(), posts[i].content)); 
+        }
+        postsToShow += 5;
+        if (postsToShow >= posts.length){
+            $("#toggle-posts").prop("hidden", true);
         }
     });
 
