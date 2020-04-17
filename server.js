@@ -16,7 +16,7 @@ const pool = new Pool({
 });
 
 const getPosts = (request, response) => {
-  pool.query('SELECT * FROM posts', (error, results) => {
+  pool.query('SELECT * FROM posts ORDER BY date DESC', (error, results) => {
     if (error) {
       throw error
     }

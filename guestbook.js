@@ -1,13 +1,19 @@
 let posts;
 async function formPost(author, date, content){
-    $("#posts").append(`
+    /*$("#posts").append(`
         <div class="hidden card w-100 mb-3 post">
             <div class="bd-highlight card-body">
                 <h6 class="card-title mb-2 text-muted">Posted by <strong>${author}</strong> on ${date}</h6>
                 <p class="card-text">${content}</p>
             </div>
         </div>
-    `);
+    `);*/
+    return `<div class="hidden card w-100 mb-3 post">
+        <div class="bd-highlight card-body">
+            <h6 class="card-title mb-2 text-muted">Posted by <strong>${author}</strong> on ${date}</h6>
+            <p class="card-text">${content}</p>
+        </div>
+    </div>`;
 }
 
 async function request_all_posts(bool) {
@@ -20,7 +26,7 @@ async function request_all_posts(bool) {
     .then((resp) => resp.json());
     for(let i = 0; i<5; i++){
         let postedOn = new Date(posts[i].date);
-        formPost(posts[i].author, postedOn.toDateString(), posts[i].content);
+        $("#posts").append(formPost(posts[i].author, postedOn.toDateString(), posts[i].content));
     }
 }
 
@@ -61,7 +67,7 @@ $(document).ready(function() {
                     $('#comment_form')[0].reset();
                     create_post(name, email, comment);
                     let currdate = new Date();
-                    formPost(name, currdate.toDateString(), comment);
+                    $('#posts').prepend(formPost(name, currdate.toDateString(), comment));
                 }
             }
         });
@@ -73,7 +79,7 @@ $(document).ready(function() {
         $("#toggle-posts").prop("hidden", true);
         for(let i = 5; i<posts.length && posts.length>=5; i++){
             let postedOn = new Date(posts[i].date);
-            formPost(posts[i].author, postedOn.toDateString(), posts[i].content); 
+            $("#posts").append(formPost(posts[i].author, postedOn.toDateString(), posts[i].content)); 
         }
     });
 
