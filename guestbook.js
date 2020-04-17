@@ -75,10 +75,10 @@ $(document).ready(function() {
             let postedOn = new Date(posts[i].date);
             $("#posts").append(formPost(posts[i].author, postedOn.toDateString(), posts[i].content)); 
         }
-        postsToShow += 5;
         if (postsToShow >= posts.length){
             $("#toggle-posts").prop("hidden", true);
         }
+        postsToShow += 5;
     });
 
     request_all_posts();
