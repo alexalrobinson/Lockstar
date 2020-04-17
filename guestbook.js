@@ -71,14 +71,14 @@ $(document).ready(function() {
     });
 
     $("#see-more").on("click", () => {
-        for(let i = postsToShow-5; i<postsToShow && posts.length>=postsToShow-5; i++){
+        for(let i = postsToShow-5; i<postsToShow; i++){
             let postedOn = new Date(posts[i].date);
             $("#posts").append(formPost(posts[i].author, postedOn.toDateString(), posts[i].content)); 
         }
-        postsToShow += 5;
         if (postsToShow >= posts.length){
             $("#toggle-posts").prop("hidden", true);
         }
+        postsToShow += 5;
     });
 
     request_all_posts();
