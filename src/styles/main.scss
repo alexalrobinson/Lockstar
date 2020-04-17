@@ -55,6 +55,8 @@ h1 {
 }
 
 .g-recaptcha {
-    width: calc(15vw + 20vh);
-    height: auto;
+    transform:scaleX(0.77);
+    -webkit-transform:scaleX(0.77);
+    transform-origin:0 0;
+    -webkit-transform-origin:0 0;
 }
