@@ -60,3 +60,10 @@ h1 {
     transform-origin:0 0;
     -webkit-transform-origin:0 0;
 }
+
+#carouselExampleControls {
+    margin-left: auto;
+    margin-right: auto;
+    height: calc(12vw + 17vh);
+    width: auto;
+}
