@@ -1,13 +1,22 @@
 let posts;
-async function formPost(author, date, content){
-    /*$("#posts").append(`
+/*async function formPost(author, date, content){
+    $("#posts").append(`
         <div class="hidden card w-100 mb-3 post">
             <div class="bd-highlight card-body">
                 <h6 class="card-title mb-2 text-muted">Posted by <strong>${author}</strong> on ${date}</h6>
                 <p class="card-text">${content}</p>
             </div>
         </div>
-    `);*/
+    `);
+    return `<div class="hidden card w-100 mb-3 post">
+        <div class="bd-highlight card-body">
+            <h6 class="card-title mb-2 text-muted">Posted by <strong>${author}</strong> on ${date}</h6>
+            <p class="card-text">${content}</p>
+        </div>
+    </div>`;
+}*/
+
+let formPost = (author, date, content) => {
     return `<div class="hidden card w-100 mb-3 post">
         <div class="bd-highlight card-body">
             <h6 class="card-title mb-2 text-muted">Posted by <strong>${author}</strong> on ${date}</h6>
