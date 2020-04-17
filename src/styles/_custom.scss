@@ -26,3 +26,10 @@ $theme-colors: (
 .active {
     color: black;
 }
+
+#carouselExampleControls {
+    margin-left: auto;
+    margin-right: auto;
+    height: calc(12vw + 17vh);
+    width: auto;
+}
