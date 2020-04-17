@@ -1,8 +1,9 @@
+$accent: #ffae42;
+
 $theme-colors: (
     "primary": black,
+    "secondary": $accent,
 );
-
-$accent: #ffae42;
 
 .carousel {
     margin-left: auto;
@@ -20,4 +21,8 @@ $accent: #ffae42;
 
 .card-header {
     background: $accent;
+}
+
+.active {
+    color: $accent;
 }
