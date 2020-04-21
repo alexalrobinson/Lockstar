@@ -67,3 +67,7 @@ h1 {
     height: calc(12vw + 17vh);
     width: auto;
 }
+
+a:hover {
+    color: $accent;
+}
