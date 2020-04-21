@@ -14,7 +14,7 @@ document.getElementById("carousel1").src = carousel1;
 document.getElementById("carousel2").src = carousel2;
 document.getElementById("carousel3").src = carousel3;
 document.getElementById("carousel4").src = carousel4;
-document.getElemenyById("aloa").src = aloa;
+document.getElementById("aloa").src = aloa;
 
 let posts;
 let postsToShow=5;
