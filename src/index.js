@@ -6,7 +6,7 @@ import carousel1 from './images/carousel1.jpg';
 import carousel2 from './images/carousel2.jpg';
 import carousel3 from './images/carousel3.jpg';
 import carousel4 from './images/carousel4.jpg';
-import aloa from './images/aloa.jpeg';
+import aloa from './images/aloa.png';
 
 document.getElementById("logo").src = logo;
 document.getElementById("van").src = van;
@@ -61,8 +61,8 @@ async function create_post(name, email, comment) {
     return await response;
 }
 
-$(document).ready(function() {
-    $('#comment_form').submit(function() {
+$(document).ready(() => {
+    $('#comment_form').submit(() => {
         $(this).ajaxSubmit({
             error: function(xhr) {
                 console.log(`Error: ${xhr.status}`);
