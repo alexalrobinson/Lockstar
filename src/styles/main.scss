@@ -62,9 +62,17 @@ h1 {
 }
 
 #carouselExampleControls {
-    max-height: calc(12vw + 17vh);
+    max-height: calc(13vw + 18vh);
 }
 
 a:hover {
     color: $accent;
+}
+
+#aloa {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: calc(10vw + 15vh);
 }
