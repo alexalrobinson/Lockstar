@@ -1,4 +1,4 @@
-let posts;
+/*let posts;
 let postsToShow=5;
 
 let formPost = (author, date, content) => {
@@ -82,4 +82,4 @@ $(document).ready(function() {
     });
 
     request_all_posts();
-});
+});*/
