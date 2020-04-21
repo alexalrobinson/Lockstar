@@ -78,7 +78,7 @@ $(document).ready(function() {
                     create_post(name, email, comment);
                     let currdate = new Date();
                     $('#posts').prepend(formPost(name, currdate.toDateString(), comment));
-                    $('#status').append("Your message was posted successfully to the guestbook, thank you for using Lockstar!");
+                    $('#status').append("<br>Your message was posted successfully to the guestbook, thank you for using Lockstar!");
                 }
             }
         });
