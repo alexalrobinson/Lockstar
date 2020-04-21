@@ -28,8 +28,5 @@ $theme-colors: (
 }
 
 #carouselExampleControls {
-    margin-left: auto;
-    margin-right: auto;
-    height: calc(12vw + 17vh);
-    width: auto;
+    max-height: calc(15vw + 20vh);
 }
