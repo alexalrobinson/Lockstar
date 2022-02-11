@@ -21,7 +21,7 @@
     "bootstrap": "^4.4.1",
     "css-loader": "^3.4.2",
     "dotenv": "^8.2.0",
-    "express-handlebars": "^4.0.0",
+    "express-handlebars": "^5.3.1",
     "express-recaptcha": "^5.0.1",
     "file-loader": "^5.0.2",
     "html-loader": "^0.5.5",
